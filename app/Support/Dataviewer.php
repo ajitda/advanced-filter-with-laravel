@@ -25,14 +25,17 @@ trait Dataviewer
             'filter_match'=> 'sometime|required|in:and,or',
             'f' => 'sometimes|required|array',
             'f.*.column' => 'required|in:'.$this->whiteListColumn(),
-            'f.*.operator' => 'required_with:f.*.column|in:'.$this->allowedOperators()
+            'f.*.operator' => 'required_with:f.*.column|in:'.$this->allowedOperators(),
+            'f.*.query_1' => 'required',
+            'f.*.query_2' => 'required_if:f.*.operator,between,not_between'
 		]);
 		if($v->fails()) {
 			//debug
 			return dd($v->messages()->all());
 			return new ValidationException;
 		}
-		return $query;
+		//return $query;
+        return (new CustomQueryBuilder)->apply($query, $data);
 	}
 
 	protected function whiteListColumn()
@@ -48,7 +51,7 @@ trait Dataviewer
 	protected function allowedOperators()
     {
         return implode(',', [
-           'equal_to', 'not_equal_to', 'less_than', 'grearter_than', 'between', 'not_between', 'containers', 'start_with', 'ends_with', 'in_the_past', 'in_the_next', 'in_the_period', 'less_than_count', 'greater_than_count', 'equal_to_count', 'not_equal_to_count', 
+           'equal_to', 'not_equal_to', 'less_than', 'grearter_than', 'between', 'not_between', 'containers', 'start_with', 'ends_with', 'in_the_past', 'in_the_next', 'in_the_period', 'less_than_count', 'greater_than_count', 'equal_to_count', 'not_equal_to_count',
         ]);
     }
 }
