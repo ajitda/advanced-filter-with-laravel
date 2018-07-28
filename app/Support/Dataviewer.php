@@ -22,7 +22,8 @@ trait Dataviewer
 			'order_column' => 'sometimes|required|in:'.$this->orderAbleColumns(),
 			'order_direction' => 'sometimes|required|in:asc,desc',
             'limit' => 'sometimes|required|integer|min:1',
-            'filter_match'=> 'sometime|required|in:and,or',
+
+             'filter_match'=> 'sometimes|required|in:and,or',
             'f' => 'sometimes|required|array',
             'f.*.column' => 'required|in:'.$this->whiteListColumn(),
             'f.*.operator' => 'required_with:f.*.column|in:'.$this->allowedOperators(),
@@ -51,7 +52,7 @@ trait Dataviewer
 	protected function allowedOperators()
     {
         return implode(',', [
-           'equal_to', 'not_equal_to', 'less_than', 'grearter_than', 'between', 'not_between', 'containers', 'start_with', 'ends_with', 'in_the_past', 'in_the_next', 'in_the_period', 'less_than_count', 'greater_than_count', 'equal_to_count', 'not_equal_to_count',
+           'equal_to', 'not_equal_to', 'less_than', 'greater_than', 'between', 'not_between', 'containers', 'start_with', 'ends_with', 'in_the_past', 'in_the_next', 'in_the_period', 'less_than_count', 'greater_than_count', 'equal_to_count', 'not_equal_to_count',
         ]);
     }
 }
