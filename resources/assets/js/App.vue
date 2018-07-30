@@ -6,17 +6,15 @@
         </div>
     </div>
 </template>
-< script
-type="text/javascript">
-    import Filterable from './components/Filterable.vue'
+< script>
+    import Filterable from './components/Filterable.vue';
     export default {
         components: { Filterable },
         data() {
             return {
                 filterable:{
-                    url:'/api/customers'
-
+                    url: '/api/customers'
             }
         }
     }
-< /script>
+</script>

@@ -43,3 +43,23 @@ body{
   overflow-y: scroll;
   padding:15px;
 }
+.penel{
+  background: #fff;
+  margin-bottom: 16px;
+  border-radius: 2px;
+  box-shadow: $box-shadow;
+  &-heading {
+    padding:8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom:1px solid $border-color;
+  }
+  &-title{
+    font-size:18px;
+    line-height:24px;
+  }
+  &-body{
+    padding:8px;
+  }
+}
