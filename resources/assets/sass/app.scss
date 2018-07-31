@@ -63,3 +63,49 @@ body{
     padding:8px;
   }
 }
+.table{
+  width:100%;
+  border-collapse:collapse;
+  thead{
+    tr{
+      th{
+        text-align: left;
+        border-bottom: 2px solid $border-color;
+        padding:5px ;
+        font-weight: bold;
+      }
+    }
+  }
+  tbody{
+    tr{
+      border-top:1px solid $border-color;
+      td{
+        vertical-align: top;
+        padding:5px;
+      }
+      &:nth-of-type(odd){
+        background: $bg-color-light;
+      }
+    }
+  }
+  &-footer{
+    padding:8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top:1px solid $border-color;
+  }
+}
+select {
+  background: #fafafa;
+  border:none;
+  border-bottom:1px solid rgba(0,0,0, 0.1);
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+  -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.01);
+  -moz-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.01);
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.01);
+  line-height:13px;
+  font-size:13px;
+}
