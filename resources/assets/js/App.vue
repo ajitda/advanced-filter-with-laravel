@@ -24,14 +24,16 @@
         </div>
     </div>
 </template>
-< script>
-    import Filterable from './components/Filterable.vue';
+< script
+type="text/javascript">
+    import Filterable from './components/Filterable.vue'
     export default {
-        components: { Filterable },
+        components: {Filterable},
         data() {
             return {
-                filterable:{
+                filterable: {
                     url: '/api/customers'
+                }
             }
         }
     }

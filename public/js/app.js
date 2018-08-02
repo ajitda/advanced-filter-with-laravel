@@ -11706,7 +11706,58 @@ var render = function() {
     _c(
       "div",
       { attrs: { className: "content" } },
-      [_c("filterable", _vm._b({}, "filterable", _vm.filterable, false))],
+      [
+        _c(
+          "filterable",
+          _vm._b(
+            {
+              scopedSlots: _vm._u([
+                {
+                  key: "default",
+                  fn: function(ref) {
+                    var item = ref.item
+                    return _c("tr", {}, [
+                      _c("td", [_vm._v(_vm._s(item.id))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(item.name))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(item.company))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(item.email))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(item.group))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          "$" + _vm._s(Number(item.total_revenue).toFixed(2))
+                        )
+                      ])
+                    ])
+                  }
+                }
+              ])
+            },
+            "filterable",
+            _vm.filterable,
+            false
+          ),
+          [
+            _c("thead", { attrs: { slot: "thead" }, slot: "thead" }, [
+              _c("tr", [
+                _c("th", [_vm._v("Id")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Name")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Company")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Group")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Total Revenue")])
+              ])
+            ])
+          ]
+        )
+      ],
       1
     )
   ])
