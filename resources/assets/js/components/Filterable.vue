@@ -155,43 +155,43 @@ Reset
     import axios from 'axios'
 
     export default {
-    props: {
-    url: String,
-    filterGroups: Array,
-    orderables: Array
-},
+            props: {
+            url: String,
+            filterGroups: Array,
+            orderables: Array
+        },
     data() {
-    return {
-    loading: true,
-    appliedFilters: [],
-    filterCandidates: [],
-    query: {
-    order_column: 'created_at',
-    order_direction: 'desc',
-    filter_match: 'and',
-    limit: 10,
-    page: 1
-},
+            return {
+                loading: true,
+                appliedFilters: [],
+                filterCandidates: [],
+                query: {
+                order_column: 'created_at',
+                order_direction: 'desc',
+                filter_match: 'and',
+                limit: 10,
+                page: 1
+            },
     collection: {
     data: []
-}
-}
+        }
+    }
 },
     computed: {
     fetchOperators() {
     return (f) => {
-    return this.availableOperators().filter((operator) => {
-    if(f.column && operator.parent.includes(f.column.type)) {
-    return operator
-}
-})
-}
-},
-},
+            return this.availableOperators().filter((operator) => {
+            if(f.column && operator.parent.includes(f.column.type)) {
+            return operator
+                    }
+                })
+            }
+        },
+    },
     mounted() {
-    this.fetch()
-    this.addFilter()
-},
+        this.fetch()
+        this.addFilter()
+    },
     methods: {
     updateOrderDirection() {
     if(this.query.order_direction === 'desc') {
@@ -202,100 +202,100 @@ Reset
     this.applyChange()
 },
     updateOrderColumn(e) {
-    const value = e.target.value
-    Vue.set(this.query, 'order_column', value)
-    this.applyChange()
-},
+        const value = e.target.value
+        Vue.set(this.query, 'order_column', value)
+        this.applyChange()
+    },
     exportToCSV() {
     // next video
-},
+    },
     resetFilter() {
-    this.appliedFilters.splice(0)
-    this.filterCandidates.splice(0)
-    this.addFilter()
-    this.query.page = 1
-    this.applyChange()
-},
+        this.appliedFilters.splice(0)
+        this.filterCandidates.splice(0)
+        this.addFilter()
+        this.query.page = 1
+        this.applyChange()
+    },
     applyFilter() {
-    Vue.set(this.$data, 'appliedFilters',
-    JSON.parse(JSON.stringify(this.filterCandidates))
-    )
-    this.query.page = 1;
-    this.applyChange()
-},
+        Vue.set(this.$data, 'appliedFilters',
+        JSON.parse(JSON.stringify(this.filterCandidates))
+        )
+        this.query.page = 1;
+        this.applyChange()
+    },
     removeFilter(f, i) {
-    this.filterCandidates.splice(i, 1)
-},
+        this.filterCandidates.splice(i, 1)
+    },
     selectOperator(f, i, e) {
-    let value = e.target.value
-    if(value.length === 0) {
-    Vue.set(this.filterCandidates[i], 'operator', value)
-    return
-}
+        let value = e.target.value
+        if(value.length === 0) {
+            Vue.set(this.filterCandidates[i], 'operator', value)
+            return
+        }
 
-    let obj = JSON.parse(value)
+        let obj = JSON.parse(value)
 
-    Vue.set(this.filterCandidates[i], 'operator', obj)
+        Vue.set(this.filterCandidates[i], 'operator', obj)
 
-    this.filterCandidates[i].query_1 = null
-    this.filterCandidates[i].query_2 = null
+        this.filterCandidates[i].query_1 = null
+        this.filterCandidates[i].query_2 = null
 
-    // set default query
+        // set default query
 
-    switch(obj.name) {
-    case 'in_the_past':
-    case 'in_the_next':
-    this.filterCandidates[i].query_1 = 28
-    this.filterCandidates[i].query_2 = 'days'
-    break;
-    case 'in_the_peroid':
-    this.filterCandidates[i].query_1 = 'today'
-    break;
-}
-},
-    selectColumn(f, i, e) {
-    let value = e.target.value
-    if(value.length === 0) {
-    Vue.set(this.filterCandidates[i], 'column', value)
-    return
-}
+        switch(obj.name) {
+            case 'in_the_past':
+            case 'in_the_next':
+            this.filterCandidates[i].query_1 = 28
+            this.filterCandidates[i].query_2 = 'days'
+            break;
+            case 'in_the_peroid':
+            this.filterCandidates[i].query_1 = 'today'
+            break;
+        }
+    },
+        selectColumn(f, i, e) {
+        let value = e.target.value
+        if(value.length === 0) {
+        Vue.set(this.filterCandidates[i], 'column', value)
+            return
+        }
 
-    let obj = JSON.parse(value)
+        let obj = JSON.parse(value)
 
-    Vue.set(this.filterCandidates[i], 'column', obj)
+        Vue.set(this.filterCandidates[i], 'column', obj)
 
-    // set default operator: todo
-    switch(obj.type) {
-    case 'numeric':
-    this.filterCandidates[i].operator = this.availableOperators()[4]
-    this.filterCandidates[i].query_1 = null
-    this.filterCandidates[i].query_2 = null
-    break;
-    case 'string':
-    this.filterCandidates[i].operator = this.availableOperators()[6]
-    this.filterCandidates[i].query_1 = null
-    this.filterCandidates[i].query_2 = null
-    break;
-    case 'datetime':
-    this.filterCandidates[i].operator = this.availableOperators()[9]
-    this.filterCandidates[i].query_1 = 28
-    this.filterCandidates[i].query_2 = 'days'
-    break;
-    case 'counter':
-    this.filterCandidates[i].operator = this.availableOperators()[14]
-    this.filterCandidates[i].query_1 = null
-    this.filterCandidates[i].query_2 = null
-    break;
-}
-},
+        // set default operator: todo
+        switch(obj.type) {
+            case 'numeric':
+            this.filterCandidates[i].operator = this.availableOperators()[4]
+            this.filterCandidates[i].query_1 = null
+            this.filterCandidates[i].query_2 = null
+            break;
+            case 'string':
+            this.filterCandidates[i].operator = this.availableOperators()[6]
+            this.filterCandidates[i].query_1 = null
+            this.filterCandidates[i].query_2 = null
+            break;
+            case 'datetime':
+            this.filterCandidates[i].operator = this.availableOperators()[9]
+            this.filterCandidates[i].query_1 = 28
+            this.filterCandidates[i].query_2 = 'days'
+            break;
+            case 'counter':
+            this.filterCandidates[i].operator = this.availableOperators()[14]
+            this.filterCandidates[i].query_1 = null
+            this.filterCandidates[i].query_2 = null
+            break;
+        }
+    },
     addFilter() {
-    this.filterCandidates.push({
-    column: '',
-    operator: '',
-    query_1: null,
-    query_2: null
-})
-},
+        this.filterCandidates.push({
+            column: '',
+            operator: '',
+            query_1: null,
+            query_2: null
+        })
+    },
     applyChange() {
     this.fetch()
 },
