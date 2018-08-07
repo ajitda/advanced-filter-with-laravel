@@ -4,12 +4,12 @@ html {
 }
 
 body {
-  height: 100%;
   width: 100%;
+  height: 100%;
   margin: 0;
   color: #484746;
   background: #fafafa;
-  font-family: Helvetic, Sans-serif;
+  font-family: Helvetica, sans-serif;
   font-size: 13px;
   line-height: 16px;
   -webkit-font-smoothing: antialiased;
@@ -33,9 +33,9 @@ body {
 }
 
 .navbar {
-  background-color: #fff;
+  background: #fff;
   height: 45px;
-  border-bottom: 2px solid rgba(63, 63, 64, 0.1);
+  border-bottom: 2px solid rgba(63, 63, 68, 0.1);
 }
 
 .content {
@@ -45,7 +45,7 @@ body {
   padding: 15px;
 }
 
-.penel {
+.panel {
   background: #fff;
   margin-bottom: 16px;
   border-radius: 2px;
@@ -53,7 +53,7 @@ body {
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
-.penel-heading {
+.panel-heading {
   padding: 8px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -64,16 +64,30 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  border-bottom: 1px solid rgba(63, 63, 64, 0.1);
+  border-bottom: 1px solid rgba(63, 63, 68, 0.1);
 }
 
-.penel-title {
+.panel-title {
   font-size: 18px;
   line-height: 24px;
 }
 
-.penel-body {
+.panel-body {
   padding: 8px;
+}
+
+.panel-footer {
+  padding: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-top: 1px solid rgba(63, 63, 68, 0.1);
 }
 
 .table {
@@ -83,13 +97,13 @@ body {
 
 .table thead tr th {
   text-align: left;
-  border-bottom: 2px solid rgba(63, 63, 64, 0.1);
+  border-bottom: 2px solid rgba(63, 63, 68, 0.1);
   padding: 5px;
   font-weight: bold;
 }
 
 .table tbody tr {
-  border-top: 1px solid rgba(63, 63, 64, 0.1);
+  border-top: 1px solid rgba(63, 63, 68, 0.1);
 }
 
 .table tbody tr td {
@@ -101,28 +115,107 @@ body {
   background: #fcfcfc;
 }
 
-.table-footer {
-  padding: 8px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  border-top: 1px solid rgba(63, 63, 64, 0.1);
-}
-
 select {
   background: #fafafa;
   border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.01);
   border-radius: 1px;
-  -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.01);
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.01);
+  -webkit-box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+  color: #484746;
   line-height: 13px;
   font-size: 13px;
+  height: 32px;
+  background: #fafafa;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.01);
+  border-radius: 1px;
+  -webkit-box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  width: 100%;
+  display: block;
+}
+
+.filter-item {
+  margin-bottom: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.filter-column {
+  padding-right: 15px;
+  width: 25%;
+}
+
+.filter-operator {
+  padding-right: 15px;
+  width: 25%;
+}
+
+.filter-query_1 {
+  width: 24%;
+  padding-right: 15px;
+}
+
+.filter-full {
+  width: 48%;
+}
+
+.filter-query_2 {
+  width: 24%;
+}
+
+.filter-remove {
+  width: 2%;
+  text-align: right;
+}
+
+.filter-remove button {
+  color: #e75650;
+  background: transparent;
+  border: none;
+  font-weight: bold;
+}
+
+.btn {
+  border: none;
+  border-radius: 2px;
+  padding: 5px 10px;
+  display: inline-block;
+  position: relative;
+  text-shadow: none;
+  cursor: pointer;
+  -webkit-transition: background 0.2s;
+  transition: background 0.2s;
+  color: #484746;
+  background: #ececec;
+  border-bottom: 1px solid #d3d2d2;
+}
+
+.btn-primary {
+  background: #3aa3e3;
+  color: #fff;
+  border-bottom: 1px solid #1d8acd;
+}
+
+.btn-secondary {
+  background: #2c405a;
+  color: #fff;
+  border-bottom: 1px solid #1b2838;
+}
+
+.filterable-export {
+  margin-bottom: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 

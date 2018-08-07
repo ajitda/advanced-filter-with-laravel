@@ -93,7 +93,7 @@ v-if="this.appliedFilters.length > 0"
 >
 Reset
 </button>
-<button class="btn btn-primary" @click="applyFilter">Apply Filter</button>
+<button class="btn btn-primary" @click="applyFilter">Apply</button>
 </div>
 </div>
 </div>
